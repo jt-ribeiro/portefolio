@@ -1,0 +1,101 @@
+@import "../styles/variables";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: $black;
+  position: relative;
+  overflow: hidden;
+
+  /* Scanlines no fundo */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.05) 0px,
+      rgba(0, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    pointer-events: none;
+    animation: scan 6s linear infinite;
+    z-index: 0;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  color: $light-blue;
+  position: relative;
+  z-index: 1;
+
+  /* glitch */
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  &::before {
+    animation: glitchTop 2s infinite linear alternate-reverse;
+    color: cyan;
+  }
+  &::after {
+    animation: glitchBottom 3s infinite linear alternate-reverse;
+    color: magenta;
+  }
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: $grey;
+  z-index: 1;
+}
+
+.cta {
+  margin-top: 2rem;
+  padding: 0.8rem 1.6rem;
+  background: $dark-blue;
+  color: $light-blue;
+  border: 1px solid $light-blue;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1;
+
+  &:hover {
+    background: $light-blue;
+    color: $black;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.7);
+  }
+}
+
+/* Animações */
+@keyframes scan {
+  from { background-position: 0 -100%; }
+  to { background-position: 0 100%; }
+}
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+  50% { clip: rect(0, 9999px, 100%, 0); transform: translate(2px, 2px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(-1px, 1px); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(2px, 2px); }
+  50% { clip: rect(0, 9999px, 100%, 0); transform: translate(-2px, -2px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(1px, -1px); }
+}
