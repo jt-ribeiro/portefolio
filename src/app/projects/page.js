@@ -8,20 +8,20 @@ const PROJECTS = [
     title: "Sistema POS Industrial (Goldylocks)",
     desc: "Checkout 30 % mais rápido para linha de produção.",
     details:
-      "Durante estágio industrial integrei funcionalidades no POS existente (Vue→React), reduzi tempo de checkout em 22 % e criei testes automatizados que baixaram bugs pós-release de 15 → 3.",
-    website: "", // ainda não está online público
-    demo: "", // podes hospedar um GIF ou vídeo depois
-    github: "https://github.com/jt-ribeiro/goldylocks-pos-frontend", // cria mesmo se privado; link para README com printscreens
-    tech: ["React", "Next.js", "REST", "MySQL", "SCSS", "Jest"],
+      "Durante estágio industrial integrei funcionalidades no POS existente (Vue), reduzi tempo de checkout em 22 % e criei testes automatizados que baixaram bugs pós-release de 15 → 3.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/goldylocks-pos-frontend",
+    tech: ["Vue.js", "PHP", "REST", "MySQL", "SCSS", "Jest"],
   },
   {
     title: "Website Corporativo – Escritório de Advogados",
     desc: "Premium UX com animações 60 fps. 95 Lighthouse.",
     details:
       "Desenvolvimento frontend de site institucional focado em UX e animações avançadas. Entregue em 3 semanas, 100 % estático, nota 95 no Lighthouse e compatível WCAG 2.1 AA.",
-    website: "https://advogados-site.vercel.app", // substitui quando tiver
+    website: "https://vercel.com/tomas-ribeiros-projects-2ec4a16d/barbosa-martins-advocacia",
     demo: "",
-    github: "https://github.com/jt-ribeiro/law-office-site",
+    github: "https://github.com/jt-ribeiro/barbosa-martins-advocacia.git",
     tech: ["React", "Sass", "Framer Motion", "Figma"],
   },
   {
@@ -29,8 +29,8 @@ const PROJECTS = [
     desc: "Substitui rato e teclado com IA em tempo real.",
     details:
       "Plugin que combina Handpose (TensorFlow.js) e Web Speech API para navegar e emitir comandos sem periféricos. Utilizado por 50+ pessoas em testes internos.",
-    website: "", // não aplica
-    demo: "https://youtu.be/XXXXX", // grava um pequeno vídeo demo
+    website: "",
+    demo: "https://youtu.be/XXXXX",
     github: "https://github.com/jt-ribeiro/hand-voice-chrome-ext",
     tech: ["TensorFlow.js", "Handpose", "Web Speech API", "Chrome APIs"],
   },
@@ -40,9 +40,9 @@ const PROJECTS = [
     details:
       "Aplicação full-stack interna para 2 restaurantes em Viana do Castelo. Diminuiu tempo de marcação de mesas de 3 min → 45 s e evita sobreposições.",
     website: "",
-    demo: "",
-    github: "https://github.com/jt-ribeiro/restaurant-manager",
-    tech: ["React", "PHP", "MySQL", "Socket.io", "SCSS"],
+    demo: "/0210.mp4", // <<< vídeo local
+    github: "https://github.com/jt-ribeiro/RestaurantV2-app",
+    tech: ["React", "PHP", "MySQL", "SCSS"],
   },
 ];
 
@@ -55,7 +55,13 @@ export default function Projects() {
 
       <ul className={styles.list}>
         {PROJECTS.map((p, i) => (
-          <Item key={p.title} data={p} index={i} isOpen={openIndex === i} setOpen={() => setOpenIndex(openIndex === i ? null : i)} />
+          <Item
+            key={p.title}
+            data={p}
+            index={i}
+            isOpen={openIndex === i}
+            setOpen={() => setOpenIndex(openIndex === i ? null : i)}
+          />
         ))}
       </ul>
     </section>
@@ -65,7 +71,11 @@ export default function Projects() {
 function Item({ data, index, isOpen, setOpen }) {
   return (
     <li className={styles.item}>
-      <button className={styles.header} onClick={setOpen} aria-expanded={isOpen}>
+      <button
+        className={styles.header}
+        onClick={setOpen}
+        aria-expanded={isOpen}
+      >
         <span className={styles.index}>{"0" + (index + 1)}</span>
         <div className={styles.info}>
           <h3>{data.title}</h3>
@@ -101,16 +111,52 @@ function Item({ data, index, isOpen, setOpen }) {
               </div>
 
               <div className={styles.links}>
-                <a href={data.website} target="_blank" rel="noreferrer" className={styles.btn}>
-                  Website
-                </a>
-                <a href={data.demo} target="_blank" rel="noreferrer" className={styles.btn}>
-                  Demo
-                </a>
-                <a href={data.github} target="_blank" rel="noreferrer" className={styles.btn}>
-                  GitHub
-                </a>
+                {data.website && (
+                  <a
+                    href={data.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.btn}
+                  >
+                    Website
+                  </a>
+                )}
+                {data.demo && (
+                  <a
+                    href={data.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.btn}
+                  >
+                    ▶ Ver Demo
+                  </a>
+                )}
+                {data.github && (
+                  <a
+                    href={data.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.btn}
+                  >
+                    GitHub
+                  </a>
+                )}
               </div>
+
+              {/* VÍDEO LOCAL – player inline (descomenta se quiser em vez de nova aba)
+              {data.demo && data.demo.endsWith('.mp4') && (
+                <div className={styles.demoVid}>
+                  <video
+                    src={data.demo}
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    style={{ width: '100%', borderRadius: 6 }}
+                  />
+                </div>
+              )} */}
             </div>
           </motion.div>
         )}
