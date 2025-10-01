@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import VideoModal from "@/components/VideoModal/VideoModal"; // ← import novo
 import styles from "./Projects.module.scss";
 
 const PROJECTS = [
@@ -21,7 +22,7 @@ const PROJECTS = [
       "Desenvolvimento frontend de site institucional focado em UX e animações avançadas. Entregue em 3 semanas, 100 % estático, nota 95 no Lighthouse e compatível WCAG 2.1 AA.",
     website: "https://vercel.com/tomas-ribeiros-projects-2ec4a16d/barbosa-martins-advocacia",
     demo: "",
-    github: "https://github.com/jt-ribeiro/barbosa-martins-advocacia.git",
+    github: "https://github.com/jt-ribeiro/barbosa-martins-advocacia",
     tech: ["React", "Sass", "Framer Motion", "Figma"],
   },
   {
@@ -40,7 +41,7 @@ const PROJECTS = [
     details:
       "Aplicação full-stack interna para 2 restaurantes em Viana do Castelo. Diminuiu tempo de marcação de mesas de 3 min → 45 s e evita sobreposições.",
     website: "",
-    demo: "/0210.mp4", // <<< vídeo local
+    demo: "/0210.mp4",
     github: "https://github.com/jt-ribeiro/RestaurantV2-app",
     tech: ["React", "PHP", "MySQL", "SCSS"],
   },
@@ -69,13 +70,11 @@ export default function Projects() {
 }
 
 function Item({ data, index, isOpen, setOpen }) {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
     <li className={styles.item}>
-      <button
-        className={styles.header}
-        onClick={setOpen}
-        aria-expanded={isOpen}
-      >
+      <button className={styles.header} onClick={setOpen} aria-expanded={isOpen}>
         <span className={styles.index}>{"0" + (index + 1)}</span>
         <div className={styles.info}>
           <h3>{data.title}</h3>
@@ -112,55 +111,28 @@ function Item({ data, index, isOpen, setOpen }) {
 
               <div className={styles.links}>
                 {data.website && (
-                  <a
-                    href={data.website}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.btn}
-                  >
+                  <a href={data.website} target="_blank" rel="noreferrer" className={styles.btn}>
                     Website
                   </a>
                 )}
                 {data.demo && (
-                  <a
-                    href={data.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.btn}
-                  >
+                  <button onClick={() => setShowVideo(true)} className={styles.btn}>
                     ▶ Ver Demo
-                  </a>
+                  </button>
                 )}
                 {data.github && (
-                  <a
-                    href={data.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={styles.btn}
-                  >
+                  <a href={data.github} target="_blank" rel="noreferrer" className={styles.btn}>
                     GitHub
                   </a>
                 )}
               </div>
-
-              {/* VÍDEO LOCAL – player inline (descomenta se quiser em vez de nova aba)
-              {data.demo && data.demo.endsWith('.mp4') && (
-                <div className={styles.demoVid}>
-                  <video
-                    src={data.demo}
-                    controls
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    style={{ width: '100%', borderRadius: 6 }}
-                  />
-                </div>
-              )} */}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* MODAL DE VÍDEO */}
+      {showVideo && <VideoModal src={data.demo} onClose={() => setShowVideo(false)} />}
     </li>
   );
 }
