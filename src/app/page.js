@@ -92,8 +92,9 @@ export default function Home() {
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 2.2, duration: 0.6 }}
 >
+  {/* VER / PREVIEW */}
   <motion.a
-    href="/cv.pdf"
+    href="../../public/cv2.pdf"
     target="_blank"
     rel="noopener noreferrer"
     className={styles.btn}
@@ -103,8 +104,9 @@ export default function Home() {
     📄 Visualizar CV
   </motion.a>
 
+  {/* DOWNLOAD */}
   <motion.a
-    href="/cv.pdf"
+    href="../../public/cv2.pdf"
     download="CV_Tomas_Ribeiro.pdf"
     className={styles.btn}
     whileHover={{ scale: 1.05 }}

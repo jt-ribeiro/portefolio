@@ -5,31 +5,44 @@ import styles from "./Projects.module.scss";
 
 const PROJECTS = [
   {
-    title: "Website Interativo",
-    desc: "React + animações dinâmicas.",
-    details: "Parallax, hover effects e micro-interações em React + Framer-motion.",
-    website: "https://meuwebsite.com",
-    demo: "https://demo.meuwebsite.com",
-    github: "https://github.com/usuario/projeto1",
-    tech: ["React", "Next.js", "SCSS", "Framer Motion"],
+    title: "Sistema POS Industrial (Goldylocks)",
+    desc: "Checkout 30 % mais rápido para linha de produção.",
+    details:
+      "Durante estágio industrial integrei funcionalidades no POS existente (Vue→React), reduzi tempo de checkout em 22 % e criei testes automatizados que baixaram bugs pós-release de 15 → 3.",
+    website: "", // ainda não está online público
+    demo: "", // podes hospedar um GIF ou vídeo depois
+    github: "https://github.com/jt-ribeiro/goldylocks-pos-frontend", // cria mesmo se privado; link para README com printscreens
+    tech: ["React", "Next.js", "REST", "MySQL", "SCSS", "Jest"],
   },
   {
-    title: "Aplicação Next.js",
-    desc: "Portefólio minimalista.",
-    details: "Web moderna, performance otimizada e animações 60 fps.",
-    website: "https://portfolio.com",
-    demo: "https://demo.portfolio.com",
-    github: "https://github.com/usuario/projeto2",
-    tech: ["Next.js", "SCSS", "Framer Motion"],
+    title: "Website Corporativo – Escritório de Advogados",
+    desc: "Premium UX com animações 60 fps. 95 Lighthouse.",
+    details:
+      "Desenvolvimento frontend de site institucional focado em UX e animações avançadas. Entregue em 3 semanas, 100 % estático, nota 95 no Lighthouse e compatível WCAG 2.1 AA.",
+    website: "https://advogados-site.vercel.app", // substitui quando tiver
+    demo: "",
+    github: "https://github.com/jt-ribeiro/law-office-site",
+    tech: ["React", "Sass", "Framer Motion", "Figma"],
   },
   {
-    title: "Experiência Multimédia",
-    desc: "Computação gráfica 3D.",
-    details: "Cenas interativas com Three.js e WebGL.",
-    website: "#",
-    demo: "#",
-    github: "https://github.com/usuario/projeto3",
-    tech: ["Three.js", "WebGL", "React"],
+    title: "Extensão Chrome – Controlo por Voz & Gestos",
+    desc: "Substitui rato e teclado com IA em tempo real.",
+    details:
+      "Plugin que combina Handpose (TensorFlow.js) e Web Speech API para navegar e emitir comandos sem periféricos. Utilizado por 50+ pessoas em testes internos.",
+    website: "", // não aplica
+    demo: "https://youtu.be/XXXXX", // grava um pequeno vídeo demo
+    github: "https://github.com/jt-ribeiro/hand-voice-chrome-ext",
+    tech: ["TensorFlow.js", "Handpose", "Web Speech API", "Chrome APIs"],
+  },
+  {
+    title: "Gestor de Mesas – Restaurante",
+    desc: "Gestão de mesas e produtos em tempo real.",
+    details:
+      "Aplicação full-stack interna para 2 restaurantes em Viana do Castelo. Diminuiu tempo de marcação de mesas de 3 min → 45 s e evita sobreposições.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/restaurant-manager",
+    tech: ["React", "PHP", "MySQL", "Socket.io", "SCSS"],
   },
 ];
 
