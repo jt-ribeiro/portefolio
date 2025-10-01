@@ -1,217 +1,136 @@
 @import "../../styles/variables";
 
 .projects {
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: $grey;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: $light-blue;
+  margin-bottom: 2.5rem;
   text-align: center;
-  padding: 2rem 1rem;
+  letter-spacing: 1px;
+}
 
-  h2 {
-    color: $light-blue;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.item {
+  background: linear-gradient(145deg, $dark-blue, $black);
+  border: 1px solid $grey;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
 
-  .card {
-    background: linear-gradient(145deg, $dark-blue, $black);
-    border: 1px solid $grey;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-
-    h3 {
-      color: $light-blue;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-    p {
-      color: $grey;
-    }
-
-    &:hover {
-      box-shadow: 0 0 25px rgba(0, 200, 255, 0.6);
-      transform: translateY(-5px);
-    }
-
-    &.expanded {
-      grid-column: 1 / -1;
-      box-shadow: 0 0 40px rgba(0, 200, 255, 0.8);
-      transform: translateY(0);
-      z-index: 10;
-      padding: 2rem;
-
-      @media (max-width: 768px) {
-        padding: 1.5rem;
-      }
-
-      @media (max-width: 480px) {
-        padding: 1rem;
-      }
-    }
-
-    .details {
-      margin-top: 1rem;
-      text-align: left;
-
-      .technologies {
-        margin: 1rem 0;
-
-        ul {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-
-          li {
-            background: $black;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-          }
-        }
-      }
-
-      .links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 1rem;
-
-        .btn {
-          background: $black;
-          color: $light-blue;
-          padding: 0.5rem 1rem;
-          border-radius: 6px;
-          border: 1px solid $light-blue;
-          transition: all 0.3s ease;
-          font-size: 0.9rem;
-
-          &:hover {
-            background: $light-blue;
-            color: $black;
-            box-shadow: 0 0 15px rgba(0, 200, 255, 0.7);
-          }
-        }
-      }
-
-      .closeBtn {
-        margin-top: 1rem;
-        background: transparent;
-        border: 1px solid $light-blue;
-        color: $light-blue;
-        padding: 0.3rem 0.8rem;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.9rem;
-
-        &:hover {
-          background: $light-blue;
-          color: $black;
-        }
-      }
-    }
-  }
-
-  .glitch {
-    position: relative;
-
-    &::before,
-    &::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-    }
-
-    &::before {
-      animation: glitchTop 2s infinite linear alternate-reverse;
-      color: cyan;
-    }
-
-    &::after {
-      animation: glitchBottom 3s infinite linear alternate-reverse;
-      color: magenta;
-    }
+  &:hover {
+    border-color: $light-blue;
   }
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.header {
   width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 255, 255, 0.05) 0px,
-    rgba(0, 255, 255, 0.05) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  animation: scan 6s linear infinite;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
 }
 
-@keyframes glitchTop {
-  0% { clip: rect(0,9999px,0,0); transform: translate(-2px,-2px); }
-  50% { clip: rect(0,9999px,100%,0); transform: translate(2px,2px); }
-  100% { clip: rect(0,9999px,0,0); transform: translate(-1px,1px); }
+.index {
+  font-size: 1.1rem;
+  color: $light-blue;
+  font-weight: bold;
+  min-width: 2rem;
 }
 
-@keyframes glitchBottom {
-  0% { clip: rect(0,9999px,0,0); transform: translate(2px,2px); }
-  50% { clip: rect(0,9999px,100%,0); transform: translate(-2px,-2px); }
-  100% { clip: rect(0,9999px,0,0); transform: translate(1px,-1px); }
-}
-
-@keyframes scan {
-  from { background-position:0 -100%; }
-  to { background-position:0 100%; }
-}
-
-/* Responsividade */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
+.info {
+  flex: 1;
+  h3 {
+    font-size: 1.05rem;
+    color: $light-blue;
+    margin: 0 0 0.2rem;
+  }
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
   }
 }
 
-/* Smartphones */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.2rem;
-  }
-  .card {
-    padding: 1.2rem;
-    .details { .technologies ul li { font-size: 0.8rem; } }
-    .details .links .btn { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+.chevron {
+  font-size: 0.8rem;
+  color: $light-blue;
+  transition: transform 0.3s ease;
+}
+
+.content {
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.inner {
+  padding: 1rem 1.5rem 1.5rem 3.2rem; /* alinha com índice */
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.chip {
+  background: rgba($light-blue, 0.15);
+  color: $light-blue;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  border: 1px solid rgba($light-blue, 0.3);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid $light-blue;
+  color: $light-blue;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: $light-blue;
+    color: $black;
+    box-shadow: 0 0 10px rgba(0, 200, 255, 0.6);
   }
 }
 
-/* Mobile pequeno */
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; gap: 1rem; }
-  .card {
-    padding: 1rem;
-    .details .links .btn { width: 100%; text-align: center; }
-    .details .technologies ul { justify-content: center; }
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .inner {
+    padding-left: 1.5rem;
   }
 }

@@ -1,101 +1,158 @@
 @import "../styles/variables";
 
+:root {
+  --bg: #0d0d0d;
+}
+
 .home {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   text-align: center;
-  background: $black;
   position: relative;
   overflow: hidden;
+  background: var(--bg);
+  transition: background 1s ease;
+}
 
-  /* Scanlines no fundo */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: repeating-linear-gradient(
-      to bottom,
-      rgba(0, 255, 255, 0.05) 0px,
-      rgba(0, 255, 255, 0.05) 2px,
-      transparent 2px,
-      transparent 4px
-    );
-    pointer-events: none;
-    animation: scan 6s linear infinite;
-    z-index: 0;
-  }
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 255, 0.04) 0px,
+    rgba(0, 255, 255, 0.04) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: scan 8s linear infinite;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   color: $light-blue;
   position: relative;
-  z-index: 1;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
 
-  /* glitch */
-  &::before,
-  &::after {
+  &.glitchActive::before,
+  &.glitchActive::after {
     content: attr(data-text);
     position: absolute;
     left: 0;
     width: 100%;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip: rect(0, 900px, 0, 0);
   }
-
-  &::before {
-    animation: glitchTop 2s infinite linear alternate-reverse;
+  &.glitchActive::before {
+    animation: glitchTop 0.2s infinite;
     color: cyan;
   }
-  &::after {
-    animation: glitchBottom 3s infinite linear alternate-reverse;
+  &.glitchActive::after {
+    animation: glitchBottom 0.2s infinite;
     color: magenta;
   }
 }
 
-.subtitle {
-  margin-top: 1rem;
-  font-size: 1.3rem;
+.subtitleWrapper {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   color: $grey;
-  z-index: 1;
+  margin-bottom: 2.5rem;
+  min-height: 1.8rem;
+}
+
+.cursor {
+  margin-left: 2px;
+  color: $light-blue;
+}
+
+.ctaWrapper {
+  margin-top: 1rem;
 }
 
 .cta {
-  margin-top: 2rem;
-  padding: 0.8rem 1.6rem;
-  background: $dark-blue;
-  color: $light-blue;
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  background: transparent;
   border: 1px solid $light-blue;
+  color: $light-blue;
   border-radius: 6px;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  z-index: 1;
+  box-shadow: 0 0 8px rgba(58, 155, 220, 0);
 
   &:hover {
     background: $light-blue;
     color: $black;
-    box-shadow: 0 0 15px rgba(0, 200, 255, 0.7);
+    box-shadow: 0 0 20px rgba(58, 155, 220, 0.7);
   }
 }
 
-/* Animações */
+.hint {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.75rem;
+  color: $grey;
+}
+
 @keyframes scan {
   from { background-position: 0 -100%; }
   to { background-position: 0 100%; }
 }
 
 @keyframes glitchTop {
-  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
-  50% { clip: rect(0, 9999px, 100%, 0); transform: translate(2px, 2px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(-1px, 1px); }
+  0% { clip: rect(0, 900px, 0, 0); transform: translate(-2px, -2px); }
+  100% { clip: rect(0, 900px, 100%, 0); transform: translate(2px, 2px); }
 }
 
 @keyframes glitchBottom {
-  0% { clip: rect(0, 9999px, 0, 0); transform: translate(2px, 2px); }
-  50% { clip: rect(0, 9999px, 100%, 0); transform: translate(-2px, -2px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(1px, -1px); }
+  0% { clip: rect(0, 900px, 0, 0); transform: translate(2px, 2px); }
+  100% { clip: rect(0, 900px, 100%, 0); transform: translate(-2px, -2px); }
+}
+
+@media (max-width: 600px) {
+  .home { padding: 2rem 1rem; }
+}
+
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.6rem;
+  background: transparent;
+  border: 1px solid $light-blue;
+  color: $light-blue;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(58, 155, 220, 0);
+
+  &:hover {
+    background: $light-blue;
+    color: $black;
+    box-shadow: 0 0 20px rgba(58, 155, 220, 0.7);
+  }
+}
+
+@media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
 }
