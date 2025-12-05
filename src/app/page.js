@@ -1,33 +1,27 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./Home.module.scss";
 
 export default function Home() {
   const [subtitle, setSubtitle] = useState("");
-  const [glitch, setGlitch] = useState(false);
   const [clicks, setClicks] = useState(0);
 
-  const fullText = "Computação Gráfica & Multimédia";
+  const fullText = "Desenvolvedor Web | Computação Gráfica & Multimedia";
 
   // typewriter suave
   useEffect(() => {
     let i = 0;
-    const int = setInterval(() => {
+    const interval = setInterval(() => {
       setSubtitle(fullText.slice(0, i + 1));
       i++;
-      if (i === fullText.length) clearInterval(int);
+      if (i === fullText.length) clearInterval(interval);
     }, 80);
-    return () => clearInterval(int);
+    return () => clearInterval(interval);
   }, []);
 
-  // glitch rápido ao hover
-  const handleGlitch = () => {
-    setGlitch(true);
-    setTimeout(() => setGlitch(false), 300);
-  };
-
-  // easter-egg: 3 cliques → altera cor de fundo
+  // easter-egg: 3 cliques → altera cor de fundo temporariamente
   useEffect(() => {
     if (clicks === 3) {
       document.documentElement.style.setProperty("--bg", "#001a33");
@@ -38,16 +32,14 @@ export default function Home() {
 
   return (
     <section className={styles.home} pageKey="home">
-      {/* scanlines */}
+      {/* scanlines discretas */}
       <div className={styles.scanlines} />
 
       <motion.h1
-        className={`${styles.title} ${glitch ? styles.glitchActive : ""}`}
-        data-text="João Ribeiro"
+        className={styles.title}
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        onMouseEnter={handleGlitch}
         onClick={() => setClicks((c) => c + 1)}
         aria-label="Nome"
       >
@@ -74,7 +66,7 @@ export default function Home() {
         className={styles.ctaWrapper}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.6 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
       >
         <motion.a
           href="/projects"
@@ -87,36 +79,36 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-  className={styles.actions}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 2.2, duration: 0.6 }}
->
-  {/* VER / PREVIEW */}
-  <motion.a
-    href="../../public/Tomas_Ribeiro_CV.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className={styles.btn}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    📄 Visualizar CV
-  </motion.a>
+        className={styles.actions}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.6 }}
+      >
+        {/* Visualizar CV */}
+        <motion.a
+          href="/Tomas_Ribeiro_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.btn}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          📄 Visualizar CV
+        </motion.a>
 
-  {/* DOWNLOAD */}
-  <motion.a
-    href="../../public/Tomas_Ribeiro_CV.pdf"
-    download="CV_Tomas_Ribeiro.pdf"
-    className={styles.btn}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    ⬇ Download CV
-  </motion.a>
-</motion.div>
+        {/* Download CV */}
+        <motion.a
+          href="/Tomas_Ribeiro_CV.pdf"
+          download="Tomas_Ribeiro_CV.pdf"
+          className={styles.btn}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          ⬇ Download CV
+        </motion.a>
+      </motion.div>
 
-      {/* dica subtísima do easter-egg */}
+      {/* Easter-egg subtil */}
       {clicks > 0 && (
         <motion.div
           className={styles.hint}
