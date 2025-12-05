@@ -94,7 +94,7 @@ export default function Home() {
 >
   {/* VER / PREVIEW */}
   <motion.a
-    href="../../public/cv2.pdf"
+    href="../../public/Tomas_Ribeiro_CV.pdf"
     target="_blank"
     rel="noopener noreferrer"
     className={styles.btn}
@@ -106,7 +106,7 @@ export default function Home() {
 
   {/* DOWNLOAD */}
   <motion.a
-    href="../../public/cv2.pdf"
+    href="../../public/Tomas_Ribeiro_CV.pdf"
     download="CV_Tomas_Ribeiro.pdf"
     className={styles.btn}
     whileHover={{ scale: 1.05 }}
