@@ -6,13 +6,15 @@ const hardSkills = [
   { name: "React & Next.js", level: 95, tag: "strong", icon: "⚛️" },
   { name: "Vue.js", level: 90, tag: "strong", icon: "🟢" },
   { name: "JavaScript ES6+", level: 90, tag: "strong", icon: "🟨" },
+  { name: "HTML5 / CSS3 / SCSS", level: 100, tag: "strong", icon: "🌐" },
+  { name: "PHP", level: 90, tag: "strong", icon: "🐘" },
   { name: "Git / GitHub", level: 85, tag: "strong", icon: "🔀" },
-  { name: "PHP", level: 90, tag: "strong", icon: "🐘" }, // ← bump de 65 → 90
-  { name: "HTML", level: 100, tag: "strong", icon: "🌐" }, // ← novo
-  { name: "C / C++", level: 75, tag: "medium", icon: "⚙️" }, // ← novo
-  { name: "Ionic", level: 50, tag: "medium", icon: "📱" }, // ← novo
+  { name: "C / C++", level: 75, tag: "medium", icon: "⚙️" },
   { name: "Node.js & APIs", level: 70, tag: "medium", icon: "🟩" },
+  { name: "Ionic / Mobile Apps", level: 50, tag: "medium", icon: "📱" },
   { name: "AI / TensorFlow", level: 60, tag: "innovation", icon: "🧠" },
+  { name: "SQL / Bases de Dados", level: 70, tag: "medium", icon: "🗄️" }, // ← extra CV
+  { name: "Figma / UI Design", level: 65, tag: "medium", icon: "🎨" }, // ← extra CV
 ];
 
 export default function Skills() {
@@ -47,9 +49,7 @@ export default function Skills() {
       </div>
 
       <p className={styles.summary}>
-        Experiência comprovada em React, Vue e JavaScript. Conhecimento
-        sólido de Git, APIs e noções de AI/Interação. Sempre em
-        aprendizagem contínua.
+        Experiência comprovada em React, Vue e JavaScript. Conhecimento sólido de Git, Node.js, APIs, PHP e noções de AI/Interação. Competências em bases de dados e design de interfaces. Sempre em aprendizagem contínua.
       </p>
     </section>
   );
