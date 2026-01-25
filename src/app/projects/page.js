@@ -6,55 +6,109 @@ import styles from "./Projects.module.scss";
 
 const PROJECTS = [
   {
-    title: "Sistema POS Industrial (Goldylocks)",
-    desc: "Checkout 30 % mais rápido para linha de produção.",
+    title: "Extensão Chrome – Acessibilidade AI",
+    desc: "Navegação hands-free via comandos de voz e gestos.",
     details:
-      "Durante estágio industrial integrei funcionalidades no POS existente (Vue), reduzi tempo de checkout em 22 % e criei testes automatizados que baixaram bugs pós-release de 15 → 3.",
-    website: "",
-    demo: "",
-    github: "https://github.com/jt-ribeiro/goldylocks-pos-frontend",
-    tech: ["Vue.js", "PHP", "REST", "MySQL", "SCSS", "Jest"],
-  },
-  {
-    title: "Website Corporativo – Escritório de Advogados",
-    desc: "Premium UX com animações 60 fps. 95 Lighthouse.",
-    details:
-      "Desenvolvimento frontend de site institucional focado em UX e animações avançadas. Entregue em 3 semanas, 100 % estático, nota 95 no Lighthouse e compatível WCAG 2.1 AA.",
-    website: "https://vercel.com/tomas-ribeiros-projects-2ec4a16d/barbosa-martins-advocacia",
-    demo: "",
-    github: "https://github.com/jt-ribeiro/barbosa-martins-advocacia",
-    tech: ["React", "Sass", "Framer Motion", "Figma"],
-  },
-  {
-    title: "Extensão Chrome – Controlo por Voz & Gestos",
-    desc: "Substitui rato e teclado com IA em tempo real.",
-    details:
-      "Plugin que combina Handpose (TensorFlow.js) e Web Speech API para navegar e emitir comandos sem periféricos. Utilizado por 50+ pessoas em testes internos.",
+      "Navegação acessível powered by AI. Extensão experimental que substitui periféricos tradicionais por comandos de voz e gestos (TensorFlow.js). Solução inovadora testada e validada por user group de 50+ pessoas.",
     website: "",
     demo: "https://youtu.be/XXXXX",
     github: "https://github.com/jt-ribeiro/hand-voice-chrome-ext",
     tech: ["TensorFlow.js", "Handpose", "Web Speech API", "Chrome APIs"],
   },
   {
-    title: "Gestor de Mesas – Restaurante",
-    desc: "Gestão de mesas e produtos em tempo real.",
+    title: "Reservas QR - Gestão Inteligente",
+    desc: "Sistema Full-stack para gestão digital de espaços.",
+    details: "Plataforma completa para digitalização de restaurantes e eventos. Permite check-in instantâneo via QR Code, gestão de lotação em tempo real e visualização de ementas. Backoffice administrativo desenvolvido com Prisma e PostgreSQL para alta escalabilidade.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/reservas-qr.git",
+    tech: ["Next.js", "Tailwind CSS", "Prisma", "PostgreSQL"],
+  },
+  {
+    title: "Gestor de Mesas – Restaurante V2",
+    desc: "Gestão de pedidos e mesas em tempo real.",
     details:
-      "Aplicação full-stack interna para 2 restaurantes em Viana do Castelo. Diminuiu tempo de marcação de mesas de 3 min → 45 s e evita sobreposições.",
+      "Plataforma interna de gestão de pedidos. Otimizou o fluxo de atendimento reduzindo o tempo de alocação de mesas de 3min para 45s. Sincronização em tempo real entre sala e cozinha para eliminar erros de pedidos.",
     website: "",
     demo: "/0210.mp4",
     github: "https://github.com/jt-ribeiro/RestaurantV2-app",
     tech: ["React", "PHP", "MySQL", "SCSS"],
   },
+  {
+    title: "Website Dentista - Dr. Alves de Sousa",
+    desc: "Landing Page Premium com Chatbot para triagem automática.",
+    details: "Solução web completa para clínica de prestígio. Integração de Chatbot inteligente (Ana) para triagem automática de pacientes, sistema de marcações direto e design focado em conversão. Stack moderna garantindo performance de topo e SEO otimizado.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/websiteDentista.git",
+    tech: ["Next.js 14", "Tailwind CSS", "Framer Motion", "Lucide React"],
+  },
+  {
+    title: "CryptoHub - Dashboard Financeiro",
+    desc: "Análise de Criptoativos em tempo real com Chart.js.",
+    details: "Dashboard analítico de criptoativos em tempo real. Arquitetura modular robusta com integração de APIs financeiras para visualização de dados complexos. Interface responsiva com foco na legibilidade de dados e performance de renderização.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/CryptoHub.git",
+    tech: ["HTML5", "Sass", "JavaScript", "Chart.js"],
+  },
+  {
+    title: "Sistema POS Industrial (Goldylocks)",
+    desc: "Otimização de checkout com redução de 22% no tempo de processo.",
+    details:
+      "Otimização de checkout industrial com impacto mensurável. Redução de 22% no tempo de processamento em linha de produção crítica. Desenvolvimento de testes automatizados (Jest) que reduziram a taxa de bugs em 80% pós-deploy.",
+    website: "",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/goldylocks-pos-frontend",
+    tech: ["Vue.js", "PHP", "REST", "MySQL", "SCSS", "Jest"],
+  },
+  {
+    title: "Website Corporativo – Barbosa Martins",
+    desc: "Experiência Digital Premium com animações 60fps | Score 95+",
+    details:
+      "Presença digital institucional de alta performance. Foco total em UX/UI com animações fluidas (60fps) e acessibilidade (WCAG 2.1). Score consistente de 95+ no Google Lighthouse, garantindo máxima visibilidade e rapidez de carregamento.",
+    website: "https://vercel.com/tomas-ribeiros-projects-2ec4a16d/barbosa-martins-advocacia",
+    demo: "",
+    github: "https://github.com/jt-ribeiro/barbosa-martins-advocacia",
+    tech: ["React", "Sass", "Framer Motion", "Figma"],
+  },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 }
+};
 
 export default function Projects() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className={styles.projects} pageKey="projects">
-      <h2 className={styles.title}>Projetos</h2>
+    <section className={styles.projects}>
+      <motion.h2
+        className={styles.title}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        Projetos
+      </motion.h2>
 
-      <ul className={styles.list}>
+      <motion.ul
+        className={styles.list}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {PROJECTS.map((p, i) => (
           <Item
             key={p.title}
@@ -64,7 +118,7 @@ export default function Projects() {
             setOpen={() => setOpenIndex(openIndex === i ? null : i)}
           />
         ))}
-      </ul>
+      </motion.ul>
     </section>
   );
 }
@@ -73,9 +127,9 @@ function Item({ data, index, isOpen, setOpen }) {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <li className={styles.item}>
+    <motion.li className={styles.item} variants={itemVariants}>
       <button className={styles.header} onClick={setOpen} aria-expanded={isOpen}>
-        <span className={styles.index}>{"0" + (index + 1)}</span>
+        <span className={styles.index}>0{index + 1}</span>
         <div className={styles.info}>
           <h3>{data.title}</h3>
           <p>{data.desc}</p>
@@ -83,7 +137,7 @@ function Item({ data, index, isOpen, setOpen }) {
         <motion.div
           className={styles.chevron}
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
         >
           ▼
         </motion.div>
@@ -96,7 +150,7 @@ function Item({ data, index, isOpen, setOpen }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
           >
             <div className={styles.inner}>
               <p>{data.details}</p>
@@ -117,7 +171,7 @@ function Item({ data, index, isOpen, setOpen }) {
                 )}
                 {data.demo && (
                   <button onClick={() => setShowVideo(true)} className={styles.btn}>
-                    ▶ Ver Demo
+                    Video Demo
                   </button>
                 )}
                 {data.github && (
@@ -133,6 +187,6 @@ function Item({ data, index, isOpen, setOpen }) {
 
       {/* MODAL DE VÍDEO */}
       {showVideo && <VideoModal src={data.demo} onClose={() => setShowVideo(false)} />}
-    </li>
+    </motion.li>
   );
 }

@@ -13,7 +13,7 @@ const skillsData = {
     { name: "Ionic / Mobile Apps", level: 65, tag: "medium", icon: "📱" },
   ],
   backend: [
-    { name: "Node.js & APIs", level: 70, tag: "medium", icon: "🟩" },
+    { name: "Node.js & APIs", level: 90, tag: "medium", icon: "🟩" },
     { name: "PHP", level: 90, tag: "strong", icon: "🐘" },
     { name: "C / C++", level: 75, tag: "medium", icon: "⚙️" },
     { name: "AI / TensorFlow", level: 90, tag: "innovation", icon: "🧠" },

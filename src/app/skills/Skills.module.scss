@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .skills {
   padding: 3rem 1.5rem;
@@ -73,85 +73,88 @@
 }
 
 .keyGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.2rem;
-    margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.card {
+  background: linear-gradient(145deg, $dark-blue, $black);
+  border: 1px solid $grey;
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.25);
   }
-  
-  .card {
-    background: linear-gradient(145deg, $dark-blue, $black);
-    border: 1px solid $grey;
-    border-radius: 10px;
-    padding: 1.2rem 1rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 12px rgba(0, 200, 255, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.25);
-    }
-  
-    .icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    h3 {
-      font-size: 0.95rem;
-      margin-bottom: 0.6rem;
-      color: $light-blue;
-    }
-  
-    .track {
-      height: 8px;
-      background: rgba($grey, 0.2);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 0.4rem;
-    }
-  
-    .fill {
-      height: 100%;
-      border-radius: 4px;
-    }
-  
-    .percent {
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
-  
-    /* cores conforme tag */
-    &.strong .fill {
-      background: $light-blue;
-      box-shadow: 0 0 10px $light-blue;
-    }
-    &.medium .fill {
-      background: $grey;
-    }
-    &.innovation .fill {
-      background: cyan; // ou uma cor extra $cyan: #00ffff;
-      box-shadow: 0 0 10px cyan;
-    }
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
   }
-  
-  .summary {
-    text-align: center;
-    max-width: 600px;
-    margin: 2rem auto 0;
+
+  h3 {
     font-size: 0.95rem;
-    opacity: 0.85;
+    margin-bottom: 0.6rem;
+    color: $light-blue;
   }
-  
-  @media (max-width: 600px) {
-    .keyGrid {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-    }
-    .card h3 {
-      font-size: 0.85rem;
-    }
+
+  .track {
+    height: 8px;
+    background: rgba($grey, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.4rem;
   }
+
+  .fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  .percent {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  /* cores conforme tag */
+  &.strong .fill {
+    background: $light-blue;
+    box-shadow: 0 0 10px $light-blue;
+  }
+
+  &.medium .fill {
+    background: $grey;
+  }
+
+  &.innovation .fill {
+    background: cyan; // ou uma cor extra $cyan: #00ffff;
+    box-shadow: 0 0 10px cyan;
+  }
+}
+
+.summary {
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .keyGrid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .card h3 {
+    font-size: 0.85rem;
+  }
+}

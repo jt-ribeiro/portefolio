@@ -8,7 +8,7 @@ export default function Home() {
   const [subtitle, setSubtitle] = useState("");
   const [clicks, setClicks] = useState(0);
 
-  const fullText = "Desenvolvedor Web | Computação Gráfica & Multimedia";
+  const fullText = "Fullstack Developer";
 
   // typewriter suave
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Home() {
   }, [clicks]);
 
   return (
-    <section className={styles.home} pageKey="home">
+    <section className={styles.home}>
       {/* scanlines discretas */}
       <div className={styles.scanlines} />
 

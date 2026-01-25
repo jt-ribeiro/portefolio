@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .header {
   display: flex;
@@ -24,7 +24,10 @@
     a {
       color: $light-blue;
       transition: 0.3s;
-      &:hover { color: $grey; }
+
+      &:hover {
+        color: $grey;
+      }
     }
   }
 
@@ -36,7 +39,7 @@
     height: 20px;
     cursor: pointer;
     z-index: 1001; // acima do menu
-  
+
     span {
       display: block;
       height: 3px;
@@ -45,23 +48,28 @@
       transition: all 0.3s ease;
       transform-origin: center;
     }
-  
+
     span.open:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
-  
+
     span.open:nth-child(2) {
       opacity: 0;
     }
-  
+
     span.open:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
     }
   }
-  
+
   @media (max-width: 768px) {
-    .nav { display: none; }
-    .hamburger { display: flex; }
+    .nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
   }
 
   .overlay {
@@ -91,12 +99,20 @@
     a {
       color: $light-blue;
       font-size: 1.2rem;
-      &:hover { color: $grey; }
+
+      &:hover {
+        color: $grey;
+      }
     }
   }
 
   @media (max-width: 768px) {
-    .nav { display: none; }
-    .hamburger { display: flex; }
+    .nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
   }
 }

@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@use "../styles/variables" as *;
 
 :root {
   --bg: #0d0d0d;
@@ -21,13 +21,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 255, 255, 0.04) 0px,
-    rgba(0, 255, 255, 0.04) 2px,
-    transparent 2px,
-    transparent 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(0, 255, 255, 0.04) 0px,
+      rgba(0, 255, 255, 0.04) 2px,
+      transparent 2px,
+      transparent 4px);
   animation: scan 8s linear infinite;
 }
 
@@ -47,10 +45,12 @@
     overflow: hidden;
     clip: rect(0, 900px, 0, 0);
   }
+
   &.glitchActive::before {
     animation: glitchTop 0.2s infinite;
     color: cyan;
   }
+
   &.glitchActive::after {
     animation: glitchBottom 0.2s infinite;
     color: magenta;
@@ -102,22 +102,43 @@
 }
 
 @keyframes scan {
-  from { background-position: 0 -100%; }
-  to { background-position: 0 100%; }
+  from {
+    background-position: 0 -100%;
+  }
+
+  to {
+    background-position: 0 100%;
+  }
 }
 
 @keyframes glitchTop {
-  0% { clip: rect(0, 900px, 0, 0); transform: translate(-2px, -2px); }
-  100% { clip: rect(0, 900px, 100%, 0); transform: translate(2px, 2px); }
+  0% {
+    clip: rect(0, 900px, 0, 0);
+    transform: translate(-2px, -2px);
+  }
+
+  100% {
+    clip: rect(0, 900px, 100%, 0);
+    transform: translate(2px, 2px);
+  }
 }
 
 @keyframes glitchBottom {
-  0% { clip: rect(0, 900px, 0, 0); transform: translate(2px, 2px); }
-  100% { clip: rect(0, 900px, 100%, 0); transform: translate(-2px, -2px); }
+  0% {
+    clip: rect(0, 900px, 0, 0);
+    transform: translate(2px, 2px);
+  }
+
+  100% {
+    clip: rect(0, 900px, 100%, 0);
+    transform: translate(-2px, -2px);
+  }
 }
 
 @media (max-width: 600px) {
-  .home { padding: 2rem 1rem; }
+  .home {
+    padding: 2rem 1rem;
+  }
 }
 
 

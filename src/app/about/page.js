@@ -12,13 +12,14 @@ export default function About() {
   ]);
   const [done, setDone] = useState(false);
   const inputRef = useRef(null);
+  const doneRef = useRef(false); // Ref to track if animation started
 
   const lines = {
     system: [
-      "joao@dev:~$ whoami",
-      "=> João Ribeiro, 25 anos",
-      "=> Lic. Computação Gráfica e Multimédia | ESTG Viana", 
-      "=> Junior Developer | React, Next.js, Vue.js",
+      "tomas@dev:~$ whoami",
+      "=> Tomás Ribeiro, 25 anos",
+      "=> Lic. Computação Gráfica e Multimédia | ESTG Viana",
+      "=> Fullstack Developer",
     ],
     bio: [
       "Gosto de explorar o desconhecido. Se é novo, difícil ou parece impossível,",
@@ -30,11 +31,13 @@ export default function About() {
   };
 
   useEffect(() => {
-    if (done) return;
+    if (done || doneRef.current) return;
+    doneRef.current = true; // Prevents double execution in Strict Mode
+
     let i = 0;
     const interval = setInterval(() => {
-      if (i < lines.system.length - 1) {
-        setHistory((h) => [...h, { type: "system", text: lines.system[i + 1] }]);
+      if (i < lines.system.length) { // Changed condition slightly to ensure all lines print correctly
+        setHistory((h) => [...h, { type: "system", text: lines.system[i] }]);
         i++;
       } else {
         clearInterval(interval);
@@ -51,7 +54,9 @@ export default function About() {
         }, 400);
       }
     }, 500);
-  }, [done]);
+
+    return () => clearInterval(interval);
+  }, []); // removed [done] dependency loop
 
   const handleKey = (e) => {
     if (e.key === "Enter") {
@@ -77,7 +82,7 @@ export default function About() {
           <span className={styles.btnClose}></span>
           <span className={styles.btnMin}></span>
           <span className={styles.btnMax}></span>
-          <span className={styles.title}>joao@dev – ~/about</span>
+          <span className={styles.title}>tomas@dev – ~/about</span>
         </div>
 
         <div className={styles.body}>
@@ -97,7 +102,7 @@ export default function About() {
 
           {!done && (
             <div className={styles.prompt}>
-              <span className={styles.user}>joao@dev:~$</span>
+              <span className={styles.user}>tomas@dev:~$</span>
               <input
                 ref={inputRef}
                 type="text"
@@ -120,10 +125,6 @@ export default function About() {
         </div>
       </motion.div>
 
-      <div className={styles.photo}>
-        {/* substitui pela tua foto ou avatar */}
-        <img src="/img/eu.jpg" alt="João Ribeiro" />
-      </div>
     </section>
   );
 }

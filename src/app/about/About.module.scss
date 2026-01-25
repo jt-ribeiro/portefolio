@@ -1,25 +1,25 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    padding: 3rem 1.5rem;
-    flex-wrap: wrap;
-    color: $grey;
-  }
-  
-  .terminal {
-    width: 100%;
-    max-width: 600px;
-    background: #0d0d0d;
-    border: 1px solid $grey;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
-  }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 1.5rem;
+  flex-wrap: wrap;
+  color: $grey;
+}
+
+.terminal {
+  width: 100%;
+  max-width: 600px;
+  background: #0d0d0d;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
+}
 
 .bar {
   display: flex;
@@ -27,6 +27,7 @@
   padding: 0.5rem 1rem;
   background: $dark-blue;
   gap: 0.5rem;
+
   .btnClose,
   .btnMin,
   .btnMax {
@@ -34,9 +35,19 @@
     height: 12px;
     border-radius: 50%;
   }
-  .btnClose { background: #ff5f57; }
-  .btnMin { background: #ffbd2e; }
-  .btnMax { background: #28ca42; }
+
+  .btnClose {
+    background: #ff5f57;
+  }
+
+  .btnMin {
+    background: #ffbd2e;
+  }
+
+  .btnMax {
+    background: #28ca42;
+  }
+
   .title {
     margin-left: auto;
     font-size: 0.75rem;
@@ -58,10 +69,26 @@
   word-break: break-word;
 }
 
-.system { color: $light-blue; }
-.user { color: cyan; }
-.bio { color: $grey; margin-left: 1rem; border-left: 2px solid $grey; padding-left: 0.8rem; }
-.call { color: cyan; font-weight: bold; margin-top: 0.8rem; }
+.system {
+  color: $light-blue;
+}
+
+.user {
+  color: cyan;
+}
+
+.bio {
+  color: $grey;
+  margin-left: 1rem;
+  border-left: 2px solid $grey;
+  padding-left: 0.8rem;
+}
+
+.call {
+  color: cyan;
+  font-weight: bold;
+  margin-top: 0.8rem;
+}
 
 .prompt {
   display: flex;
@@ -90,27 +117,30 @@
 }
 
 .photo {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid $light-blue;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.25);
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid $light-blue;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.25);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  @media (max-width: 768px) {
-    .about {
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .photo {
-      order: -1; /* ← foto primeiro */
-      width: 180px;
-      height: 180px;
-    }
+  .photo {
+    order: -1;
+    /* ← foto primeiro */
+    width: 180px;
+    height: 180px;
   }
+}

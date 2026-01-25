@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .contact {
   min-height: 100vh;
@@ -39,10 +39,12 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
   }
+
   &::before {
     animation: glitchTop 2s infinite linear alternate-reverse;
     color: cyan;
   }
+
   &::after {
     animation: glitchBottom 3s infinite linear alternate-reverse;
     color: magenta;
@@ -52,6 +54,7 @@
 /* terminal */
 .locked {
   text-align: center;
+
   .code {
     background: rgba(0, 0, 0, 0.4);
     border-left: 3px solid $light-blue;
@@ -62,6 +65,7 @@
     text-align: left;
     line-height: 1.4;
   }
+
   .line {
     display: block;
   }
@@ -87,6 +91,7 @@
 /* pós-desbloqueio */
 .unlocked {
   text-align: center;
+
   .mail {
     display: inline-block;
     font-size: 1.2rem;
@@ -95,6 +100,7 @@
     letter-spacing: 1px;
     word-break: break-all;
   }
+
   .cursor {
     display: inline-block;
     margin-left: 2px;
@@ -104,19 +110,23 @@
 
 .social {
   margin-top: 1.5rem;
+
   span {
     font-size: 0.85rem;
     opacity: 0.7;
   }
+
   div {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-top: 0.5rem;
   }
+
   a {
     color: $light-blue;
     transition: 0.3s;
+
     &:hover {
       color: $grey;
     }
@@ -128,13 +138,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 255, 255, 0.03) 0px,
-    rgba(0, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(0, 255, 255, 0.03) 0px,
+      rgba(0, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 3px);
   animation: scan 6s linear infinite;
 }
 
@@ -143,6 +151,7 @@
   from {
     background-position: 0 -100%;
   }
+
   to {
     background-position: 0 100%;
   }
